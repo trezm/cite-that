@@ -40,6 +40,12 @@ function redirect(req, res) {
       });
     }
 
+    if (!results.redirectUrl) {
+      return res.status(404).json({
+        error: 'No such url!'
+      });
+    }
+
     res.redirect(results.redirectUrl);
   });
 }
