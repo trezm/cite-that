@@ -1,0 +1,31 @@
+{
+  "name": "cite-that",
+  "version": "0.0.1",
+  "contributors": [
+    {
+      "name": "Pete Mertz",
+      "email": "peter.s.mertz@gmail.com"
+    }
+  ],
+  "main": "app.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "dependencies": {
+    "async": "^0.9.0",
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "redis": "2.3.0",
+    "underscore": "1.8.3",
+    "uuid": "2.0.1",
+    "winston": "1.0.0"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "grunt": "^0.4.5",
+    "grunt-concurrent": "^0.5.0",
+    "grunt-nodemon": "^0.4.0",
+    "mocha": "*",
+    "supertest": "*"
+  }
+}
