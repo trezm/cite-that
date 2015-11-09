@@ -10,9 +10,7 @@ function checkHash(hash) {
   const regex = /\d{8}/;
 
   if (regex.test(hash)) {
-    return {
-      redirectUrl: [pubmedBaseUrl, hash].join('/')
-    };
+    return [pubmedBaseUrl, hash].join('/');
   }
 
   return null;
