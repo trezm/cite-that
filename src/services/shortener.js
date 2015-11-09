@@ -24,7 +24,7 @@ function redirect(req, res) {
     });
   }
 
-  hash = req.params.hash;
+  hash = '0' + req.params.hash;
 
   async.parallel({
     increaseCount: function increaseCount(done) {
