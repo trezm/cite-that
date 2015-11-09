@@ -1,6 +1,7 @@
 'use strict';
 
 var async = require('async');
+var builtins = require('../lib/builtins');
 var crypto = require('crypto');
 var redis = require('../lib/redis');
 
@@ -12,7 +13,7 @@ module.exports = {
 function _hash(url) {
   let shasum = crypto.createHash('sha1');
   shasum.update(url);
-  return '0' + shasum.digest('hex').substring(0, 6);
+  return 'z' + shasum.digest('hex').substring(0, 6);
 }
 
 function redirect(req, res) {
@@ -31,6 +32,10 @@ function redirect(req, res) {
       redis.incr(hash + ':count', done);
     },
     redirectUrl: function redirectUrl(done) {
+      if (hash.indexOf('z') !== 0) {
+        return done(null, builtins.checkHash(hash));
+      }
+
       redis.get(hash, done);
     }
   }, function finished(err, results) {
