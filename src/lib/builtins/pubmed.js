@@ -3,8 +3,8 @@
 const pubmedBaseUrl = 'http://www.ncbi.nlm.nih.gov/pubmed';
 
 module.exports = {
-
-}
+  checkHash: checkHash
+};
 
 function checkHash(hash) {
   const regex = /\d{8}/;
