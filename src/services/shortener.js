@@ -12,7 +12,7 @@ module.exports = {
 function _hash(url) {
   let shasum = crypto.createHash('sha1');
   shasum.update(url);
-  return shasum.digest('hex').substring(0, 6);
+  return '0' + shasum.digest('hex').substring(0, 6);
 }
 
 function redirect(req, res) {
@@ -24,7 +24,7 @@ function redirect(req, res) {
     });
   }
 
-  hash = '0' + req.params.hash;
+  hash = req.params.hash;
 
   async.parallel({
     increaseCount: function increaseCount(done) {
