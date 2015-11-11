@@ -2,7 +2,7 @@ var settings = require('../../settings');
 var services = require('../services');
 
 module.exports.router = function(app) {
-	app.use(function(req, res, next) {
+	function log(req, res, next) {
     logger.log('info', '[' + new Date() + '] ' + req.path, {
 			method: req.method,
 			query: req.query,
@@ -11,7 +11,7 @@ module.exports.router = function(app) {
 		});
 
 		next();
-	});
+	};
 
 	app.get('/ping', function(req, res) {
 		res.send('pong');
@@ -27,13 +27,8 @@ module.exports.router = function(app) {
   });
 
   /**
-   * This is all for angular
-   */
-  app.get('/', function(req, res) { res.send('./dist/index.html'); });
-
-  /**
    * These are the shortener links
    */
-  app.post('/shorten', services.shortener.shorten);
-  app.get('/:hash', services.shortener.redirect);
+  app.post('/shorten', log, services.shortener.shorten);
+  app.get('/:hash', log, services.shortener.redirect);
 }
