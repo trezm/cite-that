@@ -26,7 +26,14 @@ var MongoLogger = winston.transports.MongoLogger = function(options) {
 util.inherits(MongoLogger, winston.Transport);
 
 MongoLogger.prototype.log = function(level, message, meta, callback) {
-  let collection = this.mongo.collection('logs');
+  let collection;
+
+  if (!this.mongo) {
+    console.log('[' + Date.now() + '] could not connect to mongo');
+    return callback();
+  }
+
+  collection = this.mongo.collection('logs');
 
   collection.insert(_.extend({
     message: message
