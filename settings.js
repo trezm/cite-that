@@ -12,6 +12,12 @@ var settings = {
     port: process.env.ENV_REDIS_PORT || 6379
   },
 
+  MONGO: {
+    host: process.env.MONGO_HOST || 'localhost',
+    port: process.env.MONGO_PORT || 27017,
+    db: process.env.MONGO_DATABASE || 'cite-that'
+  },
+
   ENV: env || 'development'
 }
 
@@ -29,6 +35,7 @@ if ( env == 'development' ) {
 // For docker settings
 if (process.env.RUNNING_DOCKER === 'true') {
   settings.REDIS.host = process.env.REDIS_HOST || 'redis';
+  settings.MONGO.host = process.env.MONGO_HOST || 'mongo';
 }
 
 module.exports = settings;

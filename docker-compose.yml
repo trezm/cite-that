@@ -6,3 +6,5 @@ server:
    - redis
 redis:
   image: redis
+mongo:
+  image: mongo

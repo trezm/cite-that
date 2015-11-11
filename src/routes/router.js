@@ -6,7 +6,8 @@ module.exports.router = function(app) {
     logger.log('info', '[' + new Date() + '] ' + req.path, {
 			method: req.method,
 			query: req.query,
-      ip: req.ip
+      ip: req.ip,
+      body: req.body
 		});
 
 		next();
@@ -15,7 +16,7 @@ module.exports.router = function(app) {
 	app.get('/ping', function(req, res) {
 		res.send('pong');
 	});
-  
+
   app.use(function(req, res, next) {
     // This needs to be tightened up
     res.setHeader('Access-Control-Allow-Origin', '*');
