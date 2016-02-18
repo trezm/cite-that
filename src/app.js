@@ -1,3 +1,9 @@
+var opbeat = require('opbeat').start({
+  appId: '3dfe776bcb',
+  organizationId: '58b0618aa6334b3a99dd09a7ec422657',
+  secretToken: 'b92b2643f9e45c8c01c8220d6dc0fbaef66c7e11'
+});
+
 // Settings
 var settings = require('../settings');
 

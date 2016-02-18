@@ -4,10 +4,9 @@ var MongoClient = require('mongodb').MongoClient;
 var settings = require('../../settings');
 
 function createClient(host, port, db, callback) {
-  host = host.replace(/mongo:tcp:\/\//, '');
   let mongoUrl = 'mongodb://' + host + ':' + port + '/' + db;
 
-  console.log('mongoUrl:', mongoUrl);
+  mongoUrl = mongoUrl.replace('mongo:tcp://', '');
 
   MongoClient.connect(mongoUrl, callback);
 }
