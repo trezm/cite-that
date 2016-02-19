@@ -31,4 +31,5 @@ module.exports.router = function(app) {
    */
   app.post('/shorten', log, services.shortener.shorten);
   app.get('/:hash', log, services.shortener.redirect);
+  app.get('/stats/:hash', log, services.stats.getStats);
 }
