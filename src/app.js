@@ -15,7 +15,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 
-app.use(bodyParser());
+app.use(bodyParser.json());
 
 var server = require('http').createServer(app).listen(settings.PORT);
 

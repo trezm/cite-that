@@ -58,6 +58,7 @@ function redirect(req, res) {
 function shorten(req, res) {
   let hex;
 
+  console.log('req:', req);
   if (!req.body.url) {
     return res.status(400).json({
       error: 'url required'

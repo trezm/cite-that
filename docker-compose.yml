@@ -1,10 +1,12 @@
 server:
   build: .
   ports:
-   - "3000:3000"
+   - "3001:3000"
   links:
    - redis
+  environment:
+  - MONGO_HOST=mongo
 redis:
   image: redis
-mongo:
-  image: mongo
+# mongo:
+#   image: mongo

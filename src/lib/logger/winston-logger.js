@@ -6,7 +6,7 @@ var settings = require('../../../settings');
 var winston = require('winston');
 
 winston.level = settings.LOG_LEVEL;
-winston.add(MongoLogger, {
+winston.add(RedisLogger, {
 	level: 'debug'
 });
 
